@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import {
   Chart as ChartJS,
   BarElement,
@@ -17,14 +18,15 @@ ChartJS.register(
   Legend
 )
 
-export default function BarChart() {
+export default function BarChart({ months, revenueEntries, revenueMonths, expenseEntries, expenseMonths }) {
+
   const data = {
-    labels: ["Jan", "Feb", "Mar"],
+    labels: [], // Months
     datasets: [
       {
         label: "Savings",
-        data: [3, 6, 9],
-        backgroundColor: "mistyrose",
+        data: [], // Savings per month
+        backgroundColor: "lightgreen",
         borderColor: "black",
         borderWidth: 1,
       },
@@ -32,6 +34,37 @@ export default function BarChart() {
   }
 
   const options = {}
+
+  if (revenueMonths !== null) {
+    revenueMonths.rows.map(entry => data.labels.push(entry.month))
+    data.labels.sort((a, b) => months.indexOf(a) - months.indexOf(b))
+  }
+
+  if (expenseMonths !== null) {
+    expenseMonths.rows.map(entry => {
+      if (!data.labels.includes(entry.month)) {
+        data.labels.push(entry.month)
+      }
+    })
+    data.labels.sort((a, b) => months.indexOf(a) - months.indexOf(b))
+  }
+
+  if (revenueEntries !== null && expenseEntries !== null) {
+    for (let i = 0; i < data.labels.length; i++) {
+      let totalPerMonth = 0
+      revenueEntries
+        .filter(entry => entry.month === data.labels[i])
+        .forEach(elem => {
+          totalPerMonth += Number(elem.amount)
+        })
+      expenseEntries
+        .filter(entry => entry.month === data.labels[i])
+        .forEach(elem => {
+          totalPerMonth -= Number(elem.amount)
+        })
+      data.datasets[0].data.push(totalPerMonth)
+    }
+  }
 
   return (
     <div className="barchart">

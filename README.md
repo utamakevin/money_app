@@ -21,3 +21,15 @@ Money App aims to create a digital dashboard for personal and small business fin
         - Add/edit/remove profile picture
         - Edit/remove name
         - Edit password 
+
+## Technical Stuffs
+
+### Dashboard
+On the dashboard, there are various charts that provides visual representations of the data fetched from the database. There are three charts available: bar, line and doughnut. They are made with react-chartjs-2 library.
+-   Line chart: 
+    - The line chart displays both revenue and expenses from each month that has entry data.
+-   Bar chart:
+    - The bar chart displays savings, which value is obtained by subtracting expenses from revenue in each month.
+-   Doughnut chart: 
+    - The doughnut chart breaks down the current month's expenses into categories.
+

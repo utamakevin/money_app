@@ -32,7 +32,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Money App</h1>
 
       <div>
         <Stack direction="row" spacing={2}>
@@ -48,9 +47,9 @@ function App() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
 
-      <SpeedDial
+      <SpeedDial className="add-button"
         ariaLabel="SpeedDial basic example"
-        sx={{ position: "absolute", bottom: 16, right: 16 }}
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
         icon={<SpeedDialIcon />}
       >
         {actions.map(action => (
