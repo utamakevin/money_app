@@ -1,5 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
 
 export default function AddRevenue({ months }) {
   const date = new Date()
@@ -32,32 +38,79 @@ export default function AddRevenue({ months }) {
 
   return (
     <div className="add-revenue">
-      <button onClick={() => navigate("/")}>Back</button>
+      <Button variant="text" onClick={() => navigate("/")}>
+        Back
+      </Button>
       <h1>Add Revenue</h1>
-      <span>Amount</span>
-      <input type="number" onChange={e => setAmount(e.target.value)} />
-      <span>Category</span>
-      <input type="text" onChange={e => setCategory(e.target.value)} />
-      <button onClick={handleSubmit}>Submit</button>
+      <div>
+        <TextField
+          id="outlined-basic"
+          label="Amount"
+          type="number"
+          variant="outlined"
+          onChange={e => setAmount(e.target.value)}
+        />
+      </div>
+      <div>
+        <TextField
+          id="outlined-basic"
+          label="Category"
+          type="text"
+          variant="outlined"
+          onChange={e => setCategory(e.target.value)}
+        />
+      </div>
+      <Button variant="contained" onClick={handleSubmit}>
+        Submit
+      </Button>
       {isExpanded ? (
         <div>
-          <button onClick={() => setIsExpanded(!isExpanded)}>Hide</button>
-          <span>Month</span>
-          <input
-            type="text"
-            defaultValue={months[date.getMonth()]}
-            onChange={e => setMonth(e.target.value)}
-          />
-          <span>Year</span>
-          <input
-            type="number"
-            defaultValue={date.getFullYear()}
-            onChange={e => setYear(e.target.value)}
-          />
+          <div>
+            <Button variant="text" onClick={() => setIsExpanded(!isExpanded)}>
+              Hide
+            </Button>
+          </div>
+
+          <FormControl sx={{ m: 1, minWidth: 223 }}>
+            <InputLabel id="demo-simple-select-label">Month</InputLabel>
+            <Select
+              labelId="month-select"
+              id="month-select"
+              value={month}
+              label="Month"
+              onChange={e => setMonth(e.target.value)}
+            >
+              <MenuItem value="Jan">Jan</MenuItem>
+              <MenuItem value="Feb">Feb</MenuItem>
+              <MenuItem value="Mar">Mar</MenuItem>
+              <MenuItem value="Apr">Apr</MenuItem>
+              <MenuItem value="May">May</MenuItem>
+              <MenuItem value="Jun">Jun</MenuItem>
+              <MenuItem value="Jul">Jul</MenuItem>
+              <MenuItem value="Aug">Aug</MenuItem>
+              <MenuItem value="Sep">Sep</MenuItem>
+              <MenuItem value="Oct">Oct</MenuItem>
+              <MenuItem value="Nov">Nov</MenuItem>
+              <MenuItem value="Dec">Dec</MenuItem>
+            </Select>
+          </FormControl>
+
+          <div>
+            <TextField
+              id="outlined-basic"
+              label="Year"
+              type="number"
+              variant="outlined"
+              defaultValue={date.getFullYear()}
+              onChange={e => setYear(e.target.value)}
+            />
+          </div>
         </div>
       ) : (
         <div>
-          <button onClick={() => setIsExpanded(!isExpanded)}>Expand</button>
+          <Button variant="text" onClick={() => setIsExpanded(!isExpanded)}>
+            Expand
+          </Button>
         </div>
       )}
     </div>
