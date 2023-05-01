@@ -3,6 +3,14 @@
   /* border: 1px solid red; */
 }
 
+body {
+  background-color: aliceblue;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
 
 /* body {
   margin: 0;

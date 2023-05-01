@@ -77,8 +77,8 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="/" element={<Dashboard months={months} />} />
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/" element={<Dashboard months={months} Item={Item} />} />
+        <Route path="/categories" element={<Categories Item={Item} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/add-revenue" element={<AddRevenue months={months} />} />
         <Route path="/add-expense" element={<AddExpense months={months} />} />

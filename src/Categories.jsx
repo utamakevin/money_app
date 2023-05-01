@@ -1,44 +1,60 @@
-import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Unstable_Grid2"
 import CategoryCard from "./components/CategoryCard"
+import { useEffect, useState } from "react"
 
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+export default function Categories({ Item }) {
+  const [revenueCategories, setRevenueCategories] = useState(null)
+  const [expensesCategories, setExpensesCategories] = useState(null)
 
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
-import SaveIcon from '@mui/icons-material/Save';
+  useEffect(() => {
+    fetch("/api/entry/revenue/categories")
+      .then(res => res.json())
+      .then(setRevenueCategories)
 
-export default function Categories() {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }))
+    fetch("/api/entry/expense/categories")
+      .then(res => res.json())
+      .then(setExpensesCategories)
+  }, [])
 
-  const actions = [
-      { icon: <MoneyOffIcon />, name: 'Expense' },
-    { icon: <AttachMoneyIcon />, name: 'Income' },
-  ];
+  // console.log(revenueCategories)
 
+  let categories = []
+  if (revenueCategories !== null) {
+    revenueCategories.rows.forEach(elem => categories.push(elem.category))
+  }
+
+  console.log(categories)
+  let arr = [1, 1, 1, 1, 1, 1]
   return (
     <div className="categories">
       <h1>Categories</h1>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid xs={12}>
-              <CategoryCard category="entertainment" details={<button>button</button>} />
-              <CategoryCard category="household" details="details2" />
+      <Item>
+        <h2>Revenue</h2>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            <Grid xs={12}>
+              {revenueCategories &&
+                revenueCategories.rows.map(entry => (
+                  <CategoryCard category={entry.category} details="details2" />
+                ))}
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-
-      
+        </Box>
+      </Item>
+      <Item>
+        <h2>Expenses</h2>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            <Grid xs={12}>
+              {expensesCategories &&
+                expensesCategories.rows.map(entry => (
+                  <CategoryCard category={entry.category} details="details2" />
+                ))}
+            </Grid>
+          </Grid>
+        </Box>
+      </Item>
     </div>
   )
 }

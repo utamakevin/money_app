@@ -18,7 +18,6 @@ export default function AddExpense({ months }) {
   const [year, setYear] = useState(date.getFullYear())
 
   const handleSubmit = () => {
-    console.log("submit")
     fetch(`/api/entry`, {
       method: "post",
       headers: {
@@ -72,7 +71,7 @@ export default function AddExpense({ months }) {
           </div>
 
           <FormControl sx={{ m: 1, minWidth: 223 }}>
-            <InputLabel id="demo-simple-select-label">Month</InputLabel>
+            <InputLabel id="month-select-label">Month</InputLabel>
             <Select
               labelId="month-select"
               id="month-select"

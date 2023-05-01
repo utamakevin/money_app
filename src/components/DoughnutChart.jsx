@@ -6,7 +6,6 @@ import { Doughnut } from "react-chartjs-2"
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default function DoughnutChart({ entries, expenseCategories }) {
-
   let data = {
     labels: [], // Expenses categories
     datasets: [
@@ -14,14 +13,13 @@ export default function DoughnutChart({ entries, expenseCategories }) {
         label: "Current Month Expense",
         data: [], // Total expenses per category
         backgroundColor: [
-          "green",
-          "orange",
-          "burlywood",
-          "red",
-          "green",
-          "blue",
+          "#90FCF9",
+          "#63B4D1",
+          "#7699D4",
+          "#9448BC",
+          "#480355",
         ],
-        borderColor: ["green", "orange", "burlywood", "red", "green", "blue"],
+        borderColor: ["#90FCF9", "#63B4D1", "#7699D4", "#9448BC", "#480355"],
       },
     ],
   }

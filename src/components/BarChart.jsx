@@ -26,9 +26,9 @@ export default function BarChart({ months, revenueEntries, revenueMonths, expens
       {
         label: "Savings",
         data: [], // Savings per month
-        backgroundColor: "lightgreen",
-        borderColor: "black",
-        borderWidth: 1,
+        backgroundColor: "deepskyblue",
+        borderColor: "dodgerblue",
+        borderWidth: 2,
       },
     ],
   }

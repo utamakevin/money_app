@@ -1,8 +1,13 @@
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+
+import List from "@mui/material/List"
+import ListItem from "@mui/material/ListItem"
+import ListItemText from "@mui/material/ListItemText"
+import Divider from "@mui/material/Divider"
 
 export default function CategoryCard({ category, details }) {
   return (
@@ -17,12 +22,25 @@ export default function CategoryCard({ category, details }) {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            {details} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            <ListItem button>
+              <ListItemText primary="3000" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemText primary="200" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemText primary="3000" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemText primary="200" />
+            </ListItem>
+            <Divider />
           </Typography>
         </AccordionDetails>
       </Accordion>
-
     </div>
   )
 }

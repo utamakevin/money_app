@@ -18,15 +18,17 @@ export default function LineChart({ months, revenueEntries, expenseEntries, reve
       {
         label: "Revenue",
         data: [], // Revenue per month
-        backgroundColor: "mistyrose",
-        borderColor: "pink",
-        pointBorderColor: "green",
+        backgroundColor: "lime",
+        borderColor: "green",
+        pointBorderColor: "goldenrod",
         tension: 0.2,
       },
       {
         label: "Expenses",
         data: [], // Expenses per month
-        borderColor: "blue",
+        backgroundColor: "yellow",
+        borderColor: "red",
+        pointBorderColor: "hotpink",
         tension: 0.2,
       },
     ],
