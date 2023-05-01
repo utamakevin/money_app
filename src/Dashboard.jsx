@@ -9,17 +9,18 @@ import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Unstable_Grid2"
 
-export default function Dashboard() {
-  // For Dashboard
+export default function Dashboard({ months }) {
+  // For dashboard
   const [user, setUser] = useState("Alex")
 
-  // For Bar Chart and Line Chart
+  // For bar and line charts
   const [revenueEntries, setRevenueEntries] = useState(null)
   const [expenseEntries, setExpenseEntries] = useState(null)
   const [revenueMonths, setRevenueMonths] = useState(null)
   const [expenseMonths, setExpenseMonths] = useState(null)
+  const [currentBalance, setCurrentBalance] = useState(null)
 
-  // For Doughnut Chart
+  // For doughnut chart
   const [entries, setEntries] = useState(null)
   const [expenseCategories, setExpenseCategories] = useState(null)
 
@@ -49,6 +50,19 @@ export default function Dashboard() {
       .then(setEntries)
   }, [])
 
+  useEffect(() => {
+    setCurrentBalance(calculateCurrentBalance())
+  }, [revenueEntries, expenseEntries])
+
+  const calculateCurrentBalance = () => {
+    let result = 0
+    if (revenueEntries !== null && expenseEntries !== null) {
+      revenueEntries.map(entry => (result += Number(entry.amount)))
+      expenseEntries.map(entry => (result -= Number(entry.amount)))
+    }
+    return result
+  }
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -57,31 +71,16 @@ export default function Dashboard() {
     color: theme.palette.text.secondary,
   }))
 
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ]
-
   return (
     <>
       <h1>Welcome {user}</h1>
       <Box sx={{ flexGrow: 1, backgroundColor: "aliceblue" }}>
         <Grid container spacing={2}>
-          <Grid container xs={12} md={6}>
-            <Grid>
+          <Grid container xs={12}>
+            <Grid xs={12}>
               <Item>
-                <Grid>Cash on Hand</Grid>
-                <Grid>1300</Grid>
+                <Grid>Current Balance:</Grid>
+                <Grid>{currentBalance}</Grid>
               </Item>
             </Grid>
           </Grid>
@@ -107,7 +106,7 @@ export default function Dashboard() {
               />
             </Item>
           </Grid>
-          <Grid xs={12} md={6}>
+          <Grid xs={12} md={5}>
             <Item>
               <DoughnutChart
                 entries={entries}

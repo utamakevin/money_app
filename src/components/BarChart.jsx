@@ -38,6 +38,17 @@ export default function BarChart({ months, revenueEntries, revenueMonths, expens
   if (revenueMonths !== null) {
     revenueMonths.rows.map(entry => data.labels.push(entry.month))
     data.labels.sort((a, b) => months.indexOf(a) - months.indexOf(b))
+
+    let indexWithData = []
+    for(let i = 0; i < months.length; i++) {
+      if(data.labels.includes(months[i])) {
+        indexWithData.push(i)
+      }
+    }
+    
+    indexWithData.sort((a, b) => a - b)
+
+    data.labels = months.slice(Number(indexWithData[0]), Number(indexWithData[indexWithData.length - 1]) + 1)
   }
 
   if (expenseMonths !== null) {
@@ -47,6 +58,17 @@ export default function BarChart({ months, revenueEntries, revenueMonths, expens
       }
     })
     data.labels.sort((a, b) => months.indexOf(a) - months.indexOf(b))
+
+    let indexWithData = []
+    for(let i = 0; i < months.length; i++) {
+      if(data.labels.includes(months[i])) {
+        indexWithData.push(i)
+      }
+    }
+    
+    indexWithData.sort((a, b) => a - b)
+
+    data.labels = months.slice(Number(indexWithData[0]), Number(indexWithData[indexWithData.length - 1]) + 1)
   }
 
   if (revenueEntries !== null && expenseEntries !== null) {
