@@ -1,20 +1,26 @@
-import "./App.css"
-import { Routes, Route, Link, useNavigate } from "react-router-dom"
-import Dashboard from "./Dashboard"
-import Categories from "./Categories"
-import Profile from "./Profile"
-import AddRevenue from "./AddRevenue"
-import AddExpense from "./AddExpense"
+// react utils
+import { Routes, Route, useNavigate } from "react-router-dom"
 
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
-import MoneyOffIcon from "@mui/icons-material/MoneyOff"
+// pages
+import Dashboard from "./pages/Dashboard"
+import Categories from "./pages/Categories"
+import Profile from "./pages/Profile"
+import AddRevenue from "./pages/AddRevenue"
+import AddExpense from "./pages/AddExpense"
 
+// components
+import ResponsiveAppBar from "./components/AppBar"
 import SpeedDial from "@mui/material/SpeedDial"
 import SpeedDialIcon from "@mui/material/SpeedDialIcon"
 import SpeedDialAction from "@mui/material/SpeedDialAction"
 
+// icons
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
+import MoneyOffIcon from "@mui/icons-material/MoneyOff"
+
+// css
+import "./css/App.css"
 import Paper from "@mui/material/Paper"
-import Stack from "@mui/material/Stack"
 import { styled } from "@mui/material/styles"
 
 function App() {
@@ -62,22 +68,14 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <Stack direction="row" spacing={2}>
-          <Item>
-            <Link to="/">Dashboard</Link>
-          </Item>
-          <Item>
-            <Link to="/categories">Categories</Link>
-          </Item>
-          <Item>
-            <Link to="/profile">Profile</Link>
-          </Item>
-        </Stack>
-      </div>
+      <ResponsiveAppBar />
 
       <Routes>
         <Route path="/" element={<Dashboard months={months} Item={Item} />} />
+        <Route
+          path="/dashboard"
+          element={<Dashboard months={months} Item={Item} />}
+        />
         <Route path="/categories" element={<Categories Item={Item} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/add-revenue" element={<AddRevenue months={months} />} />

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Unstable_Grid2"
-import CategoryCard from "./components/CategoryCard"
+import CategoryCard from "../components/CategoryCard"
 import { useEffect, useState } from "react"
 
 export default function Categories({ Item }) {
@@ -17,15 +17,6 @@ export default function Categories({ Item }) {
       .then(setExpensesCategories)
   }, [])
 
-  // console.log(revenueCategories)
-
-  let categories = []
-  if (revenueCategories !== null) {
-    revenueCategories.rows.forEach(elem => categories.push(elem.category))
-  }
-
-  console.log(categories)
-  let arr = [1, 1, 1, 1, 1, 1]
   return (
     <div className="categories">
       <h1>Categories</h1>

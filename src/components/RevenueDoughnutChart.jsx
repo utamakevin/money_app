@@ -1,31 +1,31 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
-import { useState, useEffect } from "react"
-
 import { Doughnut } from "react-chartjs-2"
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default function DoughnutChart({ entries, expenseCategories }) {
+export default function RevenueDoughnutChart({ entries, revenueCategories }) {
   let data = {
-    labels: [], // Expenses categories
+    labels: [], // Revenue categories
     datasets: [
       {
-        label: "Current Month Expense",
-        data: [], // Total expenses per category
+        label: "Historical Revenue",
+        data: [], // Total revenue per category
         backgroundColor: [
-          "#90FCF9",
-          "#63B4D1",
-          "#7699D4",
-          "#9448BC",
-          "#480355",
+          "#AEF78E",
+          "#CAFFB9",
+          "#66A182",
+          "#C0D461"
         ],
-        borderColor: ["#90FCF9", "#63B4D1", "#7699D4", "#9448BC", "#480355"],
+        borderColor: ["#AEF78E",
+        "#CAFFB9",
+        "#66A182",
+        "#C0D461"],
       },
     ],
   }
 
-  if (expenseCategories !== null) {
-    expenseCategories.rows.map(entry => data.labels.push(entry.category))
+  if (revenueCategories !== null) {
+    revenueCategories.rows.map(entry => data.labels.push(entry.category))
   }
 
   if (entries !== null) {
@@ -42,7 +42,7 @@ export default function DoughnutChart({ entries, expenseCategories }) {
 
   return (
     <div className="doughnutchart">
-      <h1>Expenses Breakdown</h1>
+      <h1>Revenue Breakdown</h1>
       <div>
         <Doughnut data={data}></Doughnut>
       </div>
