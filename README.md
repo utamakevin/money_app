@@ -25,11 +25,14 @@ Money App aims to create a digital dashboard for personal and small business fin
     - Categories: 
         Here, the user can see different categories their money is spent on.
 
-    - Profile: 
+    - Profile (unfinished): 
         This is the settings page for users to edit their profile and access. This page includes:
         - Add/edit/remove profile picture
         - Edit/remove name
         - Edit password 
+
+- Server
+    - The server-side is a CRUD server made with Express. Several notable functions are: find and add data entries, search by category, type and month. These are used to communicate user's interation with the database.
 
 ## Technical Stuffs
 
