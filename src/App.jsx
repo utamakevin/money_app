@@ -97,6 +97,10 @@ function App() {
           />
         ))}
       </SpeedDial>
+      <footer className="copy">
+        <div>----</div>
+        <span>&copy; 2023 <a href="https://github.com/utamakevin/">utamakevin</a></span>
+      </footer>
     </div>
   )
 }

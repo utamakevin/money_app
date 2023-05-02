@@ -1,5 +1,14 @@
 # Money App
-Money App aims to create a digital dashboard for personal and small business finance.
+Money App aims to create a digital dashboard for personal and small business finance. The app can be accessed [here](https://money-app-g7tp.onrender.com/).
+
+## Tech Stack
+-   React
+-   Postgres
+-   Express
+
+## Library
+-   Material UI
+-   ChartJS-2
 
 ## Features
 - Frontend
@@ -7,14 +16,14 @@ Money App aims to create a digital dashboard for personal and small business fin
     - Dashboard: 
         This is the main page of the app and contains 'at-a-glance' informations that comes from various data points inside the app. This page includes:
         - A welcome message showing the user signed in
-        - Aggregate Cash flow chart (income, outcome and savings - the diffence between income and outcome) on daily, monthly or yearly basis
+        - Aggregate Cash flow chart (income, outcome and savings).
         - Current cash on hand
-        - Top three spending categories
+        - Income and spending categories
         - Add input button - entry amount, description and category.
+        Note: The charts are smart enough to include months that have no entry in the equation, provided that there is at least one month with entries before and after it.
 
     - Categories: 
-        Here, the user can see on which category their money is being spent. There is the total amount of money spent on each category. This page includes:
-        - Search bar for category search - filter out which spending to view
+        Here, the user can see different categories their money is spent on.
 
     - Profile: 
         This is the settings page for users to edit their profile and access. This page includes:
@@ -31,5 +40,8 @@ On the dashboard, there are various charts that provides visual representations 
 -   Bar chart:
     - The bar chart displays savings, which value is obtained by subtracting expenses from revenue in each month.
 -   Doughnut chart: 
-    - The doughnut chart breaks down the current month's expenses into categories.
+    - The doughnut charts breaks down the aggregate revenue and expenses into categories.
+
+### Categories
+Each category is made with MUI accordion. Upon click, it will expand to show various amount spent on the category. 
 
