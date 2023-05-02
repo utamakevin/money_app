@@ -15,7 +15,7 @@ import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
 import LocalAtmIcon from "@mui/icons-material/LocalAtm"
 
-const pages = ["dashboard", "categories"]
+const pages = ["Dashboard", "Categories"]
 const settings = ["Profile", "Account", "Logout"]
 
 function ResponsiveAppBar() {
@@ -37,10 +37,6 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
-  }
-
-  const handleNavigate = e => {
-    console.log(e.target)
   }
 
   return (
@@ -96,7 +92,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map(page => (
-                <MenuItem key={page} onClick={handleNavigate}>
+                <MenuItem key={page} onClick={() => navigate(`/${page}`)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -136,7 +132,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Ryan Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Ryan Sharp" src="#" />
               </IconButton>
             </Tooltip>
             <Menu

@@ -73,11 +73,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard months={months} Item={Item} />} />
         <Route
-          path="/dashboard"
+          path="/Dashboard"
           element={<Dashboard months={months} Item={Item} />}
         />
-        <Route path="/categories" element={<Categories Item={Item} />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/Categories" element={<Categories Item={Item} />} />
+        <Route path="/Profile" element={<Profile />} />
         <Route path="/add-revenue" element={<AddRevenue months={months} />} />
         <Route path="/add-expense" element={<AddExpense months={months} />} />
       </Routes>
