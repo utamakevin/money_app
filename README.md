@@ -1,6 +1,8 @@
 # Money App
 Money App aims to create a digital dashboard for personal and small business finance. The app can be accessed [here](https://money-app-g7tp.onrender.com/).
 
+![Money App Dashboard](/public/img/screenshot.png)
+
 ## Tech Stack
 -   React
 -   Postgres
